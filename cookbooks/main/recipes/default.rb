@@ -58,6 +58,7 @@
 #require_recipe "mysql_administrative_tools"
 
 require_recipe "pdftk"
+require_recipe "imagemagick"
 
 #uncomment to include the Elasticsearch recipe
 #require_recipe "elasticsearch"
