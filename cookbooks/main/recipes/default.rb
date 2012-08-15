@@ -59,10 +59,6 @@
 
 require_recipe "pdftk"
 
-ey_cloud_report "imagemagick" do 
-  message "Everything is commented out." 
-end 
-
 require_recipe "imagemagick"
 
 #uncomment to include the Elasticsearch recipe
