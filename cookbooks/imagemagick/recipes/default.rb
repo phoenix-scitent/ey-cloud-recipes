@@ -3,11 +3,11 @@
 # Recipe:: default
 #
 
-execute "uninstall imagemagick package" do
-  command %Q{
-    emerge --unmerge imagemagick
-  }
-end
+# execute "uninstall imagemagick package" do
+#   command %Q{
+#     emerge --unmerge imagemagick
+#   }
+# end
 
 version = '6.7.8-6'
 
