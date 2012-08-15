@@ -16,12 +16,12 @@ bash "compile-imagemagick" do
    code <<-EOH
     tar zxvf ImageMagick-#{version}.tar.gz
     cd ImageMagick-#{version}
-#    ./configure
-#    make
-#    make install
-#    ldconfig /usr/local/lib
-#    ln -s /usr/local/include/ImageMagick/wand /usr/local/include/wand
-#    ln -s /usr/local/include/ImageMagick/magick /usr/local/include/magick
+    ./configure
+    make
+    make install
+    ldconfig /usr/local/lib
+    ln -s /usr/local/include/ImageMagick/wand /usr/local/include/wand
+    ln -s /usr/local/include/ImageMagick/magick /usr/local/include/magick
   EOH
   action :nothing
 end
