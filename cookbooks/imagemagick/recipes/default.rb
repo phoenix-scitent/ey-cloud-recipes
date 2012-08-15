@@ -9,7 +9,7 @@ execute "uninstall imagemagick package" do
   }
 end
 
-version = '6.7.8-10' 
+version = '6.7.9-0' 
 
 bash "compile-imagemagick" do
    cwd Chef::Config[:file_cache_path]
