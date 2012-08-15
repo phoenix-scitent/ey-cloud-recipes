@@ -9,8 +9,9 @@ execute "uninstall imagemagick package" do
   }
 end
 
-version = '6.7.8-10'
- 
+#version = '6.7.8-10'
+version = '6.7.5-7' 
+
 bash "compile-imagemagick" do
    cwd Chef::Config[:file_cache_path]
    code <<-EOH
@@ -27,7 +28,8 @@ bash "compile-imagemagick" do
 end
  
 remote_file "#{Chef::Config[:file_cache_path]}/ImageMagick-#{version}.tar.gz" do
-  source "http://www.imagemagick.org/download/ImageMagick-#{version}.tar.gz"
+  #source "http://www.imagemagick.org/download/ImageMagick-#{version}.tar.gz"
+  source "http://ftp.nluug.nl/ImageMagick/ImageMagick-#{version}.tar.gz"
   checksum "e1a37ad8931ed41727fbd01c5a044823b2234be158f55a71e7b55fbf755cea91"
   notifies :run, resources(:bash => 'compile-imagemagick'), :immediately
 end
