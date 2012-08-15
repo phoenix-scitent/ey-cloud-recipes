@@ -3,15 +3,11 @@
 # Recipe:: default
 #
 
-ey_cloud_report "imagemagick" do 
-  message "Everything is commented out." 
-end 
-
-# execute "uninstall imagemagick package" do
-#   command %Q{
-#     emerge --unmerge imagemagick
-#   }
-# end
+execute "uninstall imagemagick package" do
+  command %Q{
+    emerge --unmerge imagemagick
+  }
+end
 
 # version = '6.7.8-6'
 # 

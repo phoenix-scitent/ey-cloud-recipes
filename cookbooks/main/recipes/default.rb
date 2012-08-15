@@ -58,7 +58,12 @@
 #require_recipe "mysql_administrative_tools"
 
 require_recipe "pdftk"
-#require_recipe "imagemagick"
+
+ey_cloud_report "imagemagick" do 
+  message "Everything is commented out." 
+end 
+
+require_recipe "imagemagick"
 
 #uncomment to include the Elasticsearch recipe
 #require_recipe "elasticsearch"
