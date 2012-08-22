@@ -24,8 +24,8 @@ bash "compile-imagemagick" do
     make
     make install
     ldconfig /usr/local/lib
-    #ln -s /usr/local/include/ImageMagick/wand /usr/local/include/wand
-    #ln -s /usr/local/include/ImageMagick/magick /usr/local/include/magick
+    ln -fs /usr/local/include/ImageMagick/wand /usr/local/include/wand
+    ln -fs /usr/local/include/ImageMagick/magick /usr/local/include/magick
   EOH
   action :nothing
 end
