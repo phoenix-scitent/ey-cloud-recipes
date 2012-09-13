@@ -61,6 +61,8 @@ require_recipe "pdftk"
 
 require_recipe "imagemagick"
 
+require_recipe "wkhtmltopdf"
+
 #uncomment to include the Elasticsearch recipe
 #require_recipe "elasticsearch"
 
