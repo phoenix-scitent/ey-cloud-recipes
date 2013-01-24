@@ -11,9 +11,9 @@ if node[:instance_role] == "solo" || (node[:instance_role] == "util" && node[:na
       worker_count = 1
     else
       case node[:ec2][:instance_type]
-      when 'm1.small': worker_count = 2
-      when 'c1.medium': worker_count = 4
-      when 'c1.xlarge': worker_count = 8
+      when 'm1.small' then worker_count = 2
+      when 'c1.medium' then worker_count = 4
+      when 'c1.xlarge' then worker_count = 8
       else 
         worker_count = 2
       end
@@ -26,10 +26,9 @@ if node[:instance_role] == "solo" || (node[:instance_role] == "util" && node[:na
         group "root"
         mode 0644
         variables({
-          :num_workers => worker_count,
           :app_name => app_name,
           :user => node[:owner_name],
-          :worker_name => "delayed_job#{count+1}",
+          :worker_name => "#{app_name}_delayed_job#{count+1}",
           :framework_env => node[:environment][:framework_env]
         })
       end

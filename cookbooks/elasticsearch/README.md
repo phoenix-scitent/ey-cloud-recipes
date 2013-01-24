@@ -37,7 +37,28 @@ Using it
       * elasticsearch_2
       * ...
 
-  * Produce /data/<appname>/shared/config/elasticsearch.yml on all instances so you can easily parse/configure elasticsearch for your usage.
+  * Produce /data/#{appname}/shared/config/elasticsearch.yml on all instances so you can easily parse/configure elasticsearch for your usage.
+
+
+Verify
+-------
+
+On your instance, run: 
+
+    curl localhost:9200
+
+Results should be simlar to:
+
+    {
+      "ok" : true,
+      "name" : "Charles Xavier",
+      "version" : {
+        "number" : "0.18.2",
+        "snapshot_build" : false
+      },
+      "tagline" : "You Know, for Search"
+     ...
+    }
 
 Plugins
 --------
