@@ -79,7 +79,6 @@ require_recipe "imagemagick"
 
 require_recipe "wkhtmltopdf"
 
-require_recipe "nfs"
 include_recipe "nfs::server"
 include_recipe "nfs::exports" 
 
