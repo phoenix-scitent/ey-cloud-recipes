@@ -77,7 +77,7 @@ if ["app_master","app","util","solo"].include?(node['instance_role'])
           Chef::Log.info("NFS master not ready yet")
           sleep 5
           system("mount /shared")
-          system("ln -sf /shared /data/#{node["application"]}/shared")
+          system("rm -rf /data/#{node["application"]}/shared/system && ln -sf /shared/#{node["application"]}/shared/system /data/#{node["application"]}/shared/system")
         end 
       end 
     end
