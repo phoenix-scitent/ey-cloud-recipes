@@ -78,6 +78,7 @@ if ["app_master","app","util","solo"].include?(node['instance_role'])
           sleep 5
           system("mount /shared")
           system("rm -rf /data/#{node["application"]}/shared/system && ln -sf /shared/#{node["application"]}/shared/system /data/#{node["application"]}/shared/system")
+          system("chown -h #{node[:owner_name]}:#{node[:owner_name]} /data/#{node["application"]}/shared/system")
         end 
       end 
     end

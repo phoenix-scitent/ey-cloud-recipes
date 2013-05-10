@@ -15,6 +15,12 @@ version = '6.7.5-10'
 url = "http://www.imagemagick.org/download/legacy/"
 checksum_value = "e1a37ad8931ed41727fbd01c5a044823b2234be158f55a71e7b55fbf755cea91"
 
+remote_file "#{Chef::Config[:file_cache_path]}/ImageMagick-#{version}.tar.gz" do
+  source "#{url}ImageMagick-#{version}.tar.gz"
+  checksum "#{checksum_value}"
+  not_if "/usr/local/bin/convert -version | grep #{version}"
+end
+
 bash "compile-imagemagick" do
    cwd Chef::Config[:file_cache_path]
    code <<-EOH
@@ -27,11 +33,5 @@ bash "compile-imagemagick" do
     ln -fs /usr/local/include/ImageMagick/wand /usr/local/include/wand
     ln -fs /usr/local/include/ImageMagick/magick /usr/local/include/magick
   EOH
-  action :nothing
-end
- 
-remote_file "#{Chef::Config[:file_cache_path]}/ImageMagick-#{version}.tar.gz" do
-  source "#{url}ImageMagick-#{version}.tar.gz"
-  checksum "#{checksum_value}"
-  notifies :run, resources(:bash => 'compile-imagemagick'), :immediately
+  not_if "/usr/local/bin/convert -version | grep #{version}"
 end
