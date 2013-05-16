@@ -24,6 +24,7 @@ end
 bash "compile-imagemagick" do
    cwd Chef::Config[:file_cache_path]
    code <<-EOH
+    export PKG_CONFIG_PATH=/usr/local/bin:/usr/local/lib64/pkgconfig
     tar zxvf ImageMagick-#{version}.tar.gz
     cd ImageMagick-#{version}
     ./configure
