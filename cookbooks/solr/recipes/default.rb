@@ -54,6 +54,20 @@ if solr_instance
     })
   end
 
+  node[:applications].each do |app, data|
+    template "/data/#{app}/shared/config/sunspot.yml"do
+      source 'sunspot.yml.erb'
+      owner node[:owner_name]
+      group node[:owner_name]
+      mode 0655
+      backup 0
+      variables({
+                    :environment => node[:environment][:framework_env],
+                    :hostname => solr_instance[:hostname]
+                })
+    end
+  end
+
   remote_file "/data/#{solr_file}" do
     source "#{solr_url}"
     owner node[:owner_name]
