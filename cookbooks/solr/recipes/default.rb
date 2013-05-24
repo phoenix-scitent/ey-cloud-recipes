@@ -3,8 +3,10 @@
 # Recipe:: default
 #
 # We specify what version we want below.
+
 solr_desiredversion = 1.4
-if ['solo', 'util'].include?(node[:instance_role])
+
+if ['util'].include?(node[:instance_role]) && node[:name].match(/solr/)
   if solr_desiredversion == 1.3
     solr_file = "apache-solr-1.3.0.tgz"
     solr_dir = "apache-solr-1.3.0"
