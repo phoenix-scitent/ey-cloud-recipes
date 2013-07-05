@@ -26,7 +26,7 @@
 #require_recipe "ssmtp"
 
 #uncomment to run the sunspot recipe
- require_recipe "sunspot"
+#require_recipe "sunspot"
 
 #uncomment to run the exim recipe
 #exim_auth "auth" do
@@ -79,8 +79,8 @@ require_recipe "wkhtmltopdf"
 
 require_recipe "emerge"
 
-include_recipe "nfs::server"
-include_recipe "nfs::exports" 
+#include_recipe "nfs::server"
+#include_recipe "nfs::exports"
 
 #uncomment to include the Elasticsearch recipe
 #require_recipe "elasticsearch"
