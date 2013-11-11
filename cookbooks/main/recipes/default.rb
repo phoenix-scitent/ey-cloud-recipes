@@ -82,13 +82,6 @@ require_recipe "emerge"
 #include_recipe "nfs::server"
 #include_recipe "nfs::exports"
 
-#uncomment to include the Elasticsearch recipe
-#require_recipe "elasticsearch"
-
-# To install specific plugins to Elasticsearch see below as an example
-#es_plugin "cloud-aws" do
-#  action :install
-#end
 
 #es_plugin "transport-memcached" do
 #  action :install
