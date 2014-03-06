@@ -82,6 +82,8 @@ require_recipe "emerge"
 include_recipe "nfs::server"
 include_recipe "nfs::exports" 
 
+require_recipe "clone_scripts"
+
 #uncomment to include the Elasticsearch recipe
 #require_recipe "elasticsearch"
 
