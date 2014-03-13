@@ -12,7 +12,7 @@ clone_scripts(
   },
   'rsync' => {
     :hour => "10",                                                   # The hour at which to begin the rsync (UTC)
-    :source_hostname => "ec2-54-204-1-204.compute-1.amazonaws.com", # The hostname of the app_master in the source env
+    :source_hostname => "ec2-23-23-234-69.compute-1.amazonaws.com", # The hostname of the app_master in the source env
   }  
 )
 
