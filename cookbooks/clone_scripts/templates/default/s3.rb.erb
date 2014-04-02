@@ -10,28 +10,30 @@ connection = Fog::Storage.new({
 
 <%- if @upload -%>
 directory = connection.directories.get("<%= @backup_bucket %>")
-if directory.nil?   
+if directory.nil?
   directory = connection.directories.create(
     :key    => "<%= @backup_bucket %>",
     :public => false,
     :location => "<%= @region %>"
   )
-  file = directory.files.create(
-    :key    => 'latest.<%= @app_name %>.dump.<%= @backup_ext %>',
-    :body   => File.open("/mnt/tmp/latest.<%= @app_name %>.dump.<%= @backup_ext %>"),
-    :public => false
-  )  
 else
-  file = directory.files.get("latest.<%= @app_name %>.dump.<%= @backup_ext %>")
-  file.body = File.open("/mnt/tmp/latest.<%= @app_name %>.dump.<%= @backup_ext %>")
+  directory.files.first.destroy
 end
+
+file = directory.files.create(
+  :key    => 'latest.<%= @app_name %>.dump.<%= @backup_ext %>',
+  :body   => File.open("/mnt/tmp/latest.<%= @app_name %>.dump.<%= @backup_ext %>"),
+  :public => false
+)
+
 file.save
 <%- else -%>
 directory = connection.directories.get("<%= @backup_bucket %>")
 
-directory.files.each do |s3_file|
-  File.open("/mnt/tmp/#{s3_file.key}", "w") do |local_file|
-    local_file.write(s3_file.body)
+File.open("/mnt/tmp/latest.<%= @app_name %>.dump.<%= @backup_ext %>","wb") do |local_file|
+  directory.files.get("latest.<%= @app_name %>.dump.<%= @backup_ext %>") do |chunk|
+    local_file << chunk
   end
-end	
+end
+
 <%- end -%>
