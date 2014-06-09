@@ -3,15 +3,15 @@ clone_scripts(
   'clone_environment_name' => "aha_external_staging_autoclone",     # The cloned environment name
   'database' => {  
     :backup_bucket => "scitent-clone-81491414",                     # A random bucket name to store the latest db dump for the clone
-    :backup_hour => "9",                                            # The hour at which the latest db dump should be uploaded to S3 (UTC)
-    :restore_hour => "12",                                           # The hour at which the latest db dump should be downloaded from S3 and imported (UTC)
+    :backup_hour => "7",                                            # The hour at which the latest db dump should be uploaded to S3 (UTC)
+    :restore_hour => "10",                                           # The hour at which the latest db dump should be downloaded from S3 and imported (UTC)
   },
   'deploy' => {
-    :hour => "11",                                                   # The hour at which the automated deploy should happen (UTC)
+    :hour => "9",                                                   # The hour at which the automated deploy should happen (UTC)
     :branch => "master-data-test"                                   # The branch to deploy for the automated deploy 
   },
   'rsync' => {
-    :hour => "10",                                                   # The hour at which to begin the rsync (UTC)
+    :hour => "8",                                                   # The hour at which to begin the rsync (UTC)
     :source_hostname => "ec2-23-23-234-69.compute-1.amazonaws.com", # The hostname of the app_master in the source env
   }  
 )
