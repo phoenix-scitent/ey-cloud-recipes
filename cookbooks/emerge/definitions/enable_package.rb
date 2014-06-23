@@ -1,28 +1,26 @@
 define :enable_package, :version => nil, :override_hardmask => false do
-  name = params[:name]
-  version = params[:version]
-  full_name = if version
-    [name, version].join('-')
-  else
-    name
-  end
+  # calculate full name
+  full_name = [params[:name], params[:version]].compact.join('-')
 
-  # won't override a hard-mask
-  p = "/etc/portage/package.keywords/local"
-  update_file "add #{full_name} to #{p}" do
+  # override mask
+  path = "/etc/portage/package.keywords/local"
+
+  update_file "unmasking #{full_name}" do
     action :append
-    path p
+    path path
     body "=#{full_name}"
-    not_if "grep '=#{full_name}' #{p}"
+    not_if "grep '=#{full_name}' #{path}"
   end
 
+  # override hard mask
   if params[:override_hardmask]
-    p = "/etc/portage/package.unmask/engineyard_overrides"
-    update_file "add #{full_name} to #{p}" do
+    path = "/etc/portage/package.unmask/engineyard_overrides"
+
+    update_file "overriding hard mask for #{full_name}" do
       action :append
-      path p
+      path path
       body "=#{full_name}"
-      not_if "grep '=#{full_name}' #{p}"
+      not_if "grep '=#{full_name}' #{path}"
     end
   end
 end

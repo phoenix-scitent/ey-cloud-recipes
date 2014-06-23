@@ -2,7 +2,7 @@
 # Cookbook Name:: solr
 # Recipe:: default
 #
- 
+
 require 'digest/sha1'
 SOLR_VERSION = '3.6.1'
 
@@ -81,7 +81,7 @@ if solr_instance
     end
 
     execute "restart-monit-solr" do
-      command "/usr/bin/monit reload && " +
+      command "/usr/bin/monit reload && sleep 10 &&" +
               "/usr/bin/monit restart all -g solr_#{app}"
       action :run
     end

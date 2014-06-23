@@ -79,8 +79,7 @@ require_recipe "wkhtmltopdf"
 
 require_recipe "emerge"
 
-include_recipe "nfs::server"
-include_recipe "nfs::exports" 
+include_recipe "nfs"
 
 require_recipe "clone_scripts"
 

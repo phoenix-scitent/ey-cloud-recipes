@@ -1,6 +1,6 @@
 #############################################
 # Sample recipe for emerging packages
-# 
+#
 # Search the Engine Yard portage tree to find
 # out package versions to install
 #
@@ -30,11 +30,10 @@ enable_package "media-libs/lcms" do
 end
 
 enable_package "media-gfx/imagemagick" do
-  version "6.7.8.8-r1"
+  version "6.7.9.9"
 end
 
 package "media-gfx/imagemagick" do
-  version "6.7.8.8-r1"
+  version "6.7.9.9"
   action :install
 end
-

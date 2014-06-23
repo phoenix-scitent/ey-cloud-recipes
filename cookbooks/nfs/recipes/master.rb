@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: nfs
-# Recipe:: server 
+# Recipe:: master
 #
 # Copyright 2011, Eric G. Wolfe
 #
@@ -17,11 +17,13 @@
 # limitations under the License.
 #
 
-include_recipe "nfs"
+if util?(node['nfs']['instance_name'])
 
-if ['util'].include?(node[:instance_role]) && node[:name].match(/nfs_master/)
-  
-  # 
+  # slave recipe checks for file existance to ensure NFS is mounted properly
+  execute "create-nfs.exists-file" do
+    command "touch /data/nfs.exists"
+  end
+
   # Start nfs-server components
   service node['nfs']['service']['server'] do
     action [ :start, :enable ]
@@ -32,9 +34,27 @@ if ['util'].include?(node[:instance_role]) && node[:name].match(/nfs_master/)
     mode 0644
     notifies :restart, resources(:service => node['nfs']['service']['server'])
   end
-  
+
   execute "restart-nfs" do
     command "/etc/init.d/nfs restart"
   end
-  
+
+  execute "exportfs" do
+    command "exportfs -ar"
+    action :nothing
+  end
+
+  unless node["nfs"]["exports"].empty?
+    template "/etc/exports" do
+       source "exports.erb"
+       mode 0644
+       #notifies :run, "execute[exportfs]"
+       notifies :run, resources(:execute => "exportfs")
+       variables({
+         :exports => node["nfs"]["exports"],
+         :hostname => node['name']
+       })
+    end
+  end
+
 end

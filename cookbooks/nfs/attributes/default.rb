@@ -19,9 +19,10 @@
 
 #options = { 'nfs' => {'service' => {}, 'config' => {}, 'packages' => {} , 'port' => {} }}
 nfs(
-  'packages' => [ 'nfs-utils', 'portmap', 'File-NFSLock' ],
+  'instance_name' => 'nfs_master',
+  'packages' => [ 'nfs-utils', 'rpcbind', 'File-NFSLock' ],
   'service' =>  {
-                  'portmap' => 'portmap',
+                  'portmap' => 'rpcbind',
                   'lock'    => 'nfslock',
                   'server'  => 'nfs'
   },
@@ -35,9 +36,11 @@ nfs(
                   'mountd'      => 32767,
                   'lockd'       => 32768
   },
-  'exports' => ["/data 10.0.0.0/8(rw,sync,no_root_squash)"]
+  'exports' => ["/data 10.0.0.0/8(rw,sync,no_root_squash)"],
+
+  # Application specific settings
+  'links' => ["system"]
 )
 
 # UPDATE APPLICATION NAME HERE
-application("aha")
-
+nfs_application("todo")
