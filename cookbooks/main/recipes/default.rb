@@ -20,7 +20,7 @@
 #require_recipe "authorized_keys"
 
 #uncomment to run the eybackup_slave recipe
-#require_recipe "eybackup_slave"
+require_recipe "eybackup_slave"
 
 #uncomment to run the ssmtp recipe
 #require_recipe "ssmtp"
