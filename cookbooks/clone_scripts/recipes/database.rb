@@ -4,6 +4,12 @@
 #
 
 if ['db_master'].include?(node[:instance_role])
+  
+  execute "install-fog-to system" do
+    command "gem install nokogiri -v 1.5.11 && gem install  fog -v 1.19.0"
+    not_if "gem list fog"
+  end
+  
   node['applications'].each do |app_name,data|
     if node['environment']['name'] == node['clone_scripts']['source_environment_name']    
       # This script will download the latest eybackup then uses s3_backup.rb to upload it to the 
