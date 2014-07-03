@@ -3,7 +3,7 @@
 # Recipe:: database
 #
 
-if ['db_master'].include?(node[:instance_role])
+if ['db_slave'].include?(node[:instance_role])
   
   execute "install-fog-to system" do
     command "gem install nokogiri -v 1.5.11 && gem install  fog -v 1.19.0"
