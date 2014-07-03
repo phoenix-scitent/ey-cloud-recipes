@@ -26,7 +26,7 @@ require_recipe "eybackup_slave"
 #require_recipe "ssmtp"
 
 #uncomment to run the sunspot recipe
- require_recipe "sunspot"
+ # require_recipe "sunspot"
 
 #uncomment to run the exim recipe
 #exim_auth "auth" do
