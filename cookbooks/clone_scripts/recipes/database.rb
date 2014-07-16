@@ -7,7 +7,7 @@ if ['db_slave'].include?(node[:instance_role])
   
   execute "install-fog-to system" do
     command "gem install nokogiri -v 1.5.11 && gem install  fog -v 1.19.0"
-    not_if "gem list fog"
+    not_if "gem list | grep fog"
   end
   
   node['applications'].each do |app_name,data|
