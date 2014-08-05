@@ -5,8 +5,8 @@
 
 if ['db_master'].include?(node[:instance_role])
   node['applications'].each do |app_name,data|
-    if node['environment']['name'] == node['clone_scripts']['source_environment_name']    
-      # This script will download the latest eybackup then uses s3_backup.rb to upload it to the 
+    if node['environment']['name'] == node['clone_scripts']['source_environment_name']
+      # This script will download the latest eybackup then uses s3_backup.rb to upload it to the
       # S3 region and bucket specified in the attribute
       template "/home/#{node['owner_name']}/database_backup.sh"do
         source "database_backup.sh.erb"
@@ -20,7 +20,7 @@ if ['db_master'].include?(node[:instance_role])
           :backup_ext => node['clone_scripts']['database']['backup_ext']
         })
       end
-    
+
       # This script is called by database_backup.sh.  It will upload the eybackup to S3.
       template "/home/#{node['owner_name']}/s3_backup.rb"do
         source 's3.rb.erb'
@@ -36,20 +36,20 @@ if ['db_master'].include?(node[:instance_role])
           :upload => true
         })
       end
-    
+
       cron "dump-and-upload-database-for-#{app_name}" do
         action  :create
         minute  "0"
         hour    node['clone_scripts']['database']['backup_hour']
-        day     "*"
+        day     node['clone_scripts']['database']['day']
         month   "*"
         weekday "*"
         command "/home/#{node['owner_name']}/database_backup.sh"
         user    "root"
-      end  
-    end    
-    
-    # Scripts to be rendered on D/R environment only.  database_restore.sh calls s3_restore.rb, 
+      end
+    end
+
+    # Scripts to be rendered on D/R environment only.  database_restore.sh calls s3_restore.rb,
     # it will download the latest eybackup and then import it.
     if node['environment']['name'] == node['clone_scripts']['clone_environment_name']
       template "/home/#{node['owner_name']}/database_restore.sh"do
@@ -64,7 +64,7 @@ if ['db_master'].include?(node[:instance_role])
           :backup_ext => node['clone_scripts']['database']['backup_ext']
         })
       end
-  
+
       template "/home/#{node['owner_name']}/s3_restore.rb"do
         source 's3.rb.erb'
         owner node['owner_name']
@@ -83,19 +83,18 @@ if ['db_master'].include?(node[:instance_role])
         action  :create
         minute  "0"
         hour    node['clone_scripts']['database']['restore_hour']
-        day     "*"
+        day     node['clone_scripts']['database']['day']
         month   "*"
         weekday "*"
         command "/home/#{node['owner_name']}/database_restore.sh"
         user    "root"
-      end      
-    end 
+      end
+    end
   end
-  
+
   # Create the directory used to store the backups
   directory "/mnt/tmp/" do
     action :create
   end
-        
-end   
 
+end
