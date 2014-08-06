@@ -86,6 +86,9 @@ if ['db_slave'].include?(node[:instance_role])
         })
       end
       cron "download-and-import-database-for-#{app_name}" do
+        action  :delete
+      end
+      cron "download-and-import-database-for-#{app_name}" do
         action  :create
         minute  "0"
         hour    node['clone_scripts']['database']['restore_hour']
