@@ -42,7 +42,9 @@ if ['db_slave'].include?(node[:instance_role])
           :upload => true
         })
       end
-
+      cron "dump-and-upload-database-for-#{app_name}" do
+        action  :delete
+      end
       cron "dump-and-upload-database-for-#{app_name}" do
         action  :create
         minute  "0"
