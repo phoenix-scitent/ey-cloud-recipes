@@ -14,16 +14,16 @@ if ['app_master', 'solo'].include?(node[:instance_role])
         action  :delete
       end
 
-      cron "deploy-#{app_name}" do
-        action  :create
-        minute  "0"
-        hour    node['clone_scripts']['deploy']['hour']
-        day     "*"
-        month   "*"
-        weekday node['clone_scripts']['deploy']['weekday']
-        command "cd /data/#{app_name}/shared/cached-copy && ey init && ey deploy -e #{node['clone_scripts']['clone_environment_name']} -r #{node['clone_scripts']['deploy']['branch']} >> /home/#{node['owner_name']}/clone_deploy.log"
-        user    node['owner_name']
-      end
+      #cron "deploy-#{app_name}" do
+      #  action  :create
+      #  minute  "0"
+      #  hour    node['clone_scripts']['deploy']['hour']
+      #  day     "*"
+      #  month   "*"
+      #  weekday node['clone_scripts']['deploy']['weekday']
+      #  command "cd /data/#{app_name}/shared/cached-copy && ey init && ey deploy -e #{node['clone_scripts']['clone_environment_name']} -r #{node['clone_scripts']['deploy']['branch']} >> /home/#{node['owner_name']}/clone_deploy.log"
+      #  user    node['owner_name']
+      #end
 
       remote_file "/home/#{node['owner_name']}/.ssh/id_rsa.pub" do
         source "id_rsa.pub"
