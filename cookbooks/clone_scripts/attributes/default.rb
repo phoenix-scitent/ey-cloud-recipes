@@ -5,7 +5,7 @@ clone_scripts(
     :backup_bucket => "scitent-clone-81491414",                     # A random bucket name to store the latest db dump for the clone
     :backup_hour => "5",                                            # The hour at which the latest db dump should be uploaded to S3 (UTC)
     :restore_hour => "8",                                           # The hour at which the latest db dump should be downloaded from S3 and imported (UTC)
-    :day => "0"                                                     # The day at which the full script occurs, "0" is Sunday (0-6)
+    :weekday => "0"                                                 # The day of week at which the full script occurs, "0" is Sunday (0-6)
   },
   'deploy' => {
     :hour => "7",                                                   # The hour at which the automated deploy should happen (UTC)
