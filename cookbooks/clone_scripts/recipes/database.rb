@@ -43,7 +43,7 @@ if ['db_master'].include?(node[:instance_role])
         hour    node['clone_scripts']['database']['backup_hour']
         day     "*"
         month   "*"
-        weekday node['clone_scripts']['database']['weekday']
+        weekday node['clone_scripts']['weekday_to_run']
         command "/home/#{node['owner_name']}/database_backup.sh"
         user    "root"
       end
@@ -85,7 +85,7 @@ if ['db_master'].include?(node[:instance_role])
         hour    node['clone_scripts']['database']['restore_hour']
         day     "*"
         month   "*"
-        weekday node['clone_scripts']['database']['weekday']
+        weekday node['clone_scripts']['weekday_to_run']
         command "/home/#{node['owner_name']}/database_restore.sh"
         user    "root"
       end
