@@ -16,7 +16,7 @@ if ['app_master', 'solo'].include?(node[:instance_role])
         hour    node['clone_scripts']['deploy']['hour']
         day     "*"
         month   "*"
-        weekday node['clone_scripts']['deploy']['weekday']
+        weekday node['clone_scripts']['weekday_to_run']
         command "cd /data/#{app_name}/shared/cached-copy && ey init && ey deploy -e #{node['clone_scripts']['clone_environment_name']} -r #{node['clone_scripts']['deploy']['branch']} >> /home/#{node['owner_name']}/clone_deploy.log"
         user    node['owner_name']
       end
