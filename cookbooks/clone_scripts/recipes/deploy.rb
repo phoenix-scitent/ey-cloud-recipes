@@ -11,6 +11,10 @@ if ['app_master', 'solo'].include?(node[:instance_role])
       end
 
       cron "deploy-#{app_name}" do
+        action  :delete
+      end
+
+      cron "deploy-#{app_name}" do
         action  :create
         minute  "0"
         hour    node['clone_scripts']['deploy']['hour']

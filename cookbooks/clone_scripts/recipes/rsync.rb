@@ -8,6 +8,10 @@ if ['app_master', 'solo'].include?(node[:instance_role])
     if node['environment']['name'] == node['clone_scripts']['clone_environment_name']
 
       cron "rsync-#{app_name}" do
+        action  :delete
+      end
+
+      cron "rsync-#{app_name}" do
         action  :create
         minute  "0"
         hour    node['clone_scripts']['rsync']['hour']
