@@ -41,9 +41,9 @@ if ['db_master'].include?(node[:instance_role])
         action  :create
         minute  "0"
         hour    node['clone_scripts']['database']['backup_hour']
-        day     node['clone_scripts']['database']['day']
+        day     "*"
         month   "*"
-        weekday "*"
+        weekday node['clone_scripts']['database']['weekday']
         command "/home/#{node['owner_name']}/database_backup.sh"
         user    "root"
       end
@@ -83,9 +83,9 @@ if ['db_master'].include?(node[:instance_role])
         action  :create
         minute  "0"
         hour    node['clone_scripts']['database']['restore_hour']
-        day     node['clone_scripts']['database']['day']
+        day     "*"
         month   "*"
-        weekday "*"
+        weekday node['clone_scripts']['database']['weekday']
         command "/home/#{node['owner_name']}/database_restore.sh"
         user    "root"
       end
