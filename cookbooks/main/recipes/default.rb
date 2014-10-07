@@ -73,6 +73,8 @@
 # additional configuration of this recipe is required
 #require_recipe "mysql_administrative_tools"
 
+require_recipe "emerge"
+
 require_recipe "pdftk"
 
 require_recipe "wkhtmltopdf"
