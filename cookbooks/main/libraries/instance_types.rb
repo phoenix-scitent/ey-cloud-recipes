@@ -1,4 +1,4 @@
-ass Chef
+class Chef
   class Recipe
     # Returns true if current instance is of type(any):
     # * solo
