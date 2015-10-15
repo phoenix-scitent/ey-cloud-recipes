@@ -96,6 +96,10 @@ execute 'remove remote_syslog gem' do
   command %{gem uninstall remote_syslog -x}
 end
 
+execute "Get remote_syslog" do
+  command "wget -O #{remote_syslog_src_filepath} https://github.com/papertrail/remote_syslog2/releases/download/#{PAPERTRAIL_CONFIG[:remote_syslog_version]}/#{PAPERTRAIL_CONFIG[:remote_syslog_filename]}"
+end
+
 remote_file remote_syslog_src_filepath do
   source "https://github.com/papertrail/remote_syslog2/releases/download/#{PAPERTRAIL_CONFIG[:remote_syslog_version]}/#{PAPERTRAIL_CONFIG[:remote_syslog_filename]}"
   checksum PAPERTRAIL_CONFIG[:remote_syslog_checksum]
