@@ -7,7 +7,7 @@ USER="<%= @user %>"
 
 gem install fog -v 1.19.0
 
-BACKUP_INDEX=`eybackup -l <%= @app_name %> -e $DB_TYPE | tail -1 | awk '{ print $1 }'`
+BACKUP_INDEX=`eybackup -c aha_prod.backups.yml -e mysql -l aha | tail -1 | cut -d ' ' -f 1`
 eybackup -e $DB_TYPE -d $BACKUP_INDEX | tail -1 | awk '{ print $2 }' | awk -F/ '{print $2}' > /mnt/tmp/file
 mv /mnt/tmp/`cat /mnt/tmp/file` /mnt/tmp/latest.<%= @app_name %>.dump.$BACKUP_EXT
 /home/<%= @user %>/s3_backup.rb
