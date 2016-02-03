@@ -30,10 +30,10 @@ enable_package "media-libs/lcms" do
 end
 
 enable_package "media-gfx/imagemagick" do
-  version "6.9.0.3"
+  version "6.8.9.7"
 end
 
 package "media-gfx/imagemagick" do
-  version "6.9.0.3"
+  version "6.8.9.7"
   action :install
 end
