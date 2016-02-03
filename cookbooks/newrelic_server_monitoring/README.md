@@ -26,7 +26,7 @@ Installation
 1. Ensure you have the emerge cookbook dependency installed in your local cookbook repository
 1. Add the following to main/recipes/default.rb
 
-``require_recipe "newrelic_server_monitoring"``
+``include_recipe "newrelic_server_monitoring"``
 
 1. Configure the [Newrelic License Key][2] in attributes/newrelic.rb
 1. Upload your recipes and apply.

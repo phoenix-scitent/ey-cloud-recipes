@@ -4,7 +4,7 @@ This cookbook will create a cron entry under the default user to touch /home/dep
 
 = USAGE:
 
-Step 1) Modify main/recipes/default.rb to require_recipe "cron_check"
+Step 1) Modify main/recipes/default.rb to include_recipe "cron_check"
 Step 2) Upload your new recipes to the environment (ey recipes upload -e <ENV>
 Step 3) Apply recipes
 
