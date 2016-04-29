@@ -13,8 +13,9 @@ clone_scripts(
     :branch => "master-data-test"                                   # The branch to deploy for the automated deploy
   },
   'rsync' => {
-    :hour => "6",                                                   # The hour at which to begin the rsync (UTC)
-    :source_hostname => "ec2-23-23-234-69.compute-1.amazonaws.com", # The hostname of the app_master in the source env
+    :hour => "6",
+    :minute => "30",                                                   # The hour at which to begin the rsync (UTC)
+    :source_hostname => "ec2-54-243-138-55.compute-1.amazonaws.com", # The hostname of the app_master in the source env
   }
 )
 
