@@ -5,7 +5,7 @@ clone_scripts(
   'database' => {
     :backup_bucket => "ey-backup-51041190d661",                     # A random bucket name to store the latest db dump for the clone
     :backup_hour => "21",                                           # The hour at which the latest db dump should be uploaded to S3 (UTC)
-    :restore_hour => "22"                                           # The hour at which the latest db dump should be downloaded from S3 and imported (UTC)
+    :restore_hour => "21"                                           # The hour at which the latest db dump should be downloaded from S3 and imported (UTC)
   },
   'deploy' => {
     :hour => "21",                                                   # The hour at which the automated deploy should happen (UTC)
