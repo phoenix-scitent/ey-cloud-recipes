@@ -3,7 +3,7 @@ clone_scripts(
   'clone_environment_name' => "aha_clone",                          # The cloned environment name
   'weekday_to_run' => "6",                                          # The day of week at which the full script occurs, "0" is Sunday (0-6)
   'database' => {
-  #  :backup_bucket => "scitent-clone-20160501",                     # A random bucket name to store the latest db dump for the clone
+  #  :backup_bucket => "ey-backup-51041190d661",                     # A random bucket name to store the latest db dump for the clone
   #  :backup_hour => "13",                                           # The hour at which the latest db dump should be uploaded to S3 (UTC)
     :restore_hour => "13"                                           # The hour at which the latest db dump should be downloaded from S3 and imported (UTC)
   },
