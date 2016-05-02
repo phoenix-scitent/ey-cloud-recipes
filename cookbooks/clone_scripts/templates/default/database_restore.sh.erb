@@ -8,6 +8,8 @@ ACTION=$1
 
 gem install fog -v 1.19.0
 
+latest=$(eybackup -c aha_prod.backups.yml -e mysql -l aha | tail -1 | cut -d ' ' -f 1)
+
 eybackup -c /root/aha_prod.backups.yml -e mysql --restore ${latest}
 
 echo "Began database backup from production and restoring it to the clone database." >> /mnt/log/clone_database_restore.log
