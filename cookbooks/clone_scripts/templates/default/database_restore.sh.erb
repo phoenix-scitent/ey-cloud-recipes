@@ -12,4 +12,4 @@ latest=$(eybackup -c aha_prod.backups.yml -e mysql -l aha | tail -1 | cut -d ' '
 
 eybackup -c /root/aha_prod.backups.yml -e mysql --restore ${latest}
 
-echo "Began database backup from production and restoring it to the clone database." >> /mnt/log/clone_database_restore.log
+echo "Completed database restore at: $(date)" >> /home/$USER/clone_database_restore.log
