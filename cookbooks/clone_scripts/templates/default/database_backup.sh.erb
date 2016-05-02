@@ -7,7 +7,6 @@
 
 # gem install fog -v 1.19.0
 
-# BACKUP_INDEX=`eybackup -c aha_prod.backups.yml -e mysql -l aha | tail -1 | cut -d ' ' -f 1`
-# eybackup -c /root/aha_prod.backups.yml -e mysql -d 9:aha | tail -1 | awk '{ print $2 }' | awk -F/ '{print $2}' > /mnt/tmp/file
-# mv /mnt/tmp/`cat /mnt/tmp/file` /mnt/tmp/latest.<%= @app_name %>.dump.$BACKUP_EXT
-# /home/<%= @user %>/s3_backup.rb
+latest=$(eybackup -c aha_prod.backups.yml -e mysql -l aha | tail -1 | cut -d ' ' -f 1)
+
+echo "ran $latest succesfully and proceeding now to pulling production backup and restoring it" >> /mnt/log/clone_database_latest.log
