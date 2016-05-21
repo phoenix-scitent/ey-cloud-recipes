@@ -8,7 +8,7 @@ clone_scripts(
     :restore_hour => "17"                                             # The hour at which the latest db dump should be downloaded from S3 and imported (UTC)
   },
   'deploy' => {
-    :hour => "171",                                                    # The hour at which the automated deploy should happen (UTC)
+    :hour => "17",                                                    # The hour at which the automated deploy should happen (UTC)
     :branch => "master-data-test"                                    # The branch to deploy for the automated deploy
   },
   'rsync' => {
