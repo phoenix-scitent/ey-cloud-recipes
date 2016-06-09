@@ -35,36 +35,11 @@ default[:nginx_common] = {
 
       # What verbs should we accept when whitelisting?
       :accepted_verbs => [
-        'ACL',
-        'BASELINE-CONTROL',
-        'CHECKIN',
-        'CHECKOUT',
-        'CONNECT',
-        'COPY',
         'DELETE',
         'GET',
-        'HEAD',
-        'LABEL',
-        'LOCK',
-        'MERGE',
-        'MKACTIVITY',
-        'MKCOL',
-        'MKWORKSPACE',
-        'MOVE',
-        'OPTIONS',
-        'ORDERPATCH',
         'PATCH',
         'POST',
-        'PROPFIND',
-        'PROPPATCH',
-        'PUT',
-        'REPORT',
-        'SEARCH',
-        'TRACE',
-        'UNCHECKOUT',
-        'UNLOCK',
-        'UPDATE',
-        'VERSION-CONTROL'
+        'PUT'
       ],
     }
   }
