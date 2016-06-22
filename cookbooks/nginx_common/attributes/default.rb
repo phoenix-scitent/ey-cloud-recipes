@@ -26,7 +26,7 @@ default[:nginx_common] = {
     # What should we use for client max body size? This affects the maximum
     # upload file size. Default: 100M
 
-    # :client_max_body_size => '100M',
+    :client_max_body_size => '400M',
 
     :http_white_list => {
       # Should we reject all HTTP verbs that are not whitelisted?
