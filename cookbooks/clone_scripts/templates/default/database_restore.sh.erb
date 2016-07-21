@@ -10,4 +10,4 @@ gem install fog -v 1.19.0
 
 sudo -i eybackup -c /root/aha_prod.backups.yml -e mysql --restore 9:aha
 
-echo "Completed database restore at: $(date)" >> /home/$USER/clone_database_restore.log
+echo "Completed database restore at: $(date +%Y%m%d-%H%M%S)" >> ~./mnt/log/clone_refresh.log
