@@ -8,9 +8,9 @@ Installation
 Follow these steps to use custom deployment recipes with your applications.
 
 * Install the engineyard gem:
-  'gem install engineyard'
+  `gem install engineyard`
 * Type in terminal after installing engineyard gem:
-  'ey whoami'
+  `ey whoami`
 * Enter in Email and Password used to log into engineyard. This will activate your ability to push chef recipes to an environment.
 * Add any custom recipes or tweaks to your copy of these recipes.
 * Upload them with: `ey recipes upload -e ENV`, where ENV is the name of your environment in Engine Yard Cloud. This may be different than your Rails environment name.
