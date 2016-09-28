@@ -4,6 +4,11 @@
 # Max size for file uploads
 client_max_body_size <%= @client_max_body_size %>;
 
+#error_page 403 406 /system/noaccess/ahahah.html;
+location /addyn {
+  return 406;
+}
+
 <%- if @use_verb_whitelist %>
 # Allow only whitelisted HTTP verbs
 if ($request_method !~ ^(<%= @whitelisted_verbs %>)$ ) {
