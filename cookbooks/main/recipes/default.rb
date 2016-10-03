@@ -83,6 +83,8 @@ include_recipe "nfs"
 
 include_recipe "clone_scripts"
 
+include_recipe "nginx_common"
+
 #uncomment to include the Elasticsearch recipe
 #include_recipe "elasticsearch"
 
