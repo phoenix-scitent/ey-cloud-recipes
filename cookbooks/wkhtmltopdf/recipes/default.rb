@@ -14,7 +14,7 @@ package "x11-libs/libXrender" do
 end
 execute "wkhtmltopdf" do
   command %Q{
-    wget http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.10.0_rc2-static-amd64.tar.bz2
+    wget http://download.gna.org/wkhtmltopdf/obsolete/linux/wkhtmltopdf-0.10.0_rc2-static-amd64.tar.bz2
     tar xvjf wkhtmltopdf-0.10.0_rc2-static-amd64.tar.bz2
     sudo mv wkhtmltopdf-amd64 /usr/local/bin/wkhtmltopdf
     sudo chmod +x /usr/local/bin/wkhtmltopdf
