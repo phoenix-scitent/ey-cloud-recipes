@@ -1,39 +1,39 @@
-#!/usr/bin/env ruby
+# #!/usr/bin/env ruby
 
-require 'fog'
+# require 'fog'
 
-connection = Fog::Storage.new({
-  :provider                 => 'AWS',
-  :aws_access_key_id        => '<%= @aws_access_key_id %>',
-  :aws_secret_access_key    => '<%= @aws_secret_access_key %>'
-})
+# connection = Fog::Storage.new({
+#   :provider                 => 'AWS',
+#   :aws_access_key_id        => '<%= @aws_access_key_id %>',
+#   :aws_secret_access_key    => '<%= @aws_secret_access_key %>'
+# })
 
-<%- if @upload -%>
-directory = connection.directories.get("<%= @backup_bucket %>")
-if directory.nil?
-  directory = connection.directories.create(
-    :key    => "<%= @backup_bucket %>",
-    :public => false,
-    :location => "<%= @region %>"
-  )
-else
-  directory.files.first.destroy
-end
+# <%- if @upload -%>
+# directory = connection.directories.get("<%= @backup_bucket %>")
+# if directory.nil?
+#   directory = connection.directories.create(
+#     :key    => "<%= @backup_bucket %>",
+#     :public => false,
+#     :location => "<%= @region %>"
+#   )
+# else
+#   directory.files.first.destroy
+# end
 
-file = directory.files.create(
-  :key    => 'latest.<%= @app_name %>.dump.<%= @backup_ext %>',
-  :body   => File.open("/mnt/tmp/latest.<%= @app_name %>.dump.<%= @backup_ext %>"),
-  :public => false
-)
+# file = directory.files.create(
+#   :key    => 'latest.<%= @app_name %>.dump.<%= @backup_ext %>',
+#   :body   => File.open("/mnt/tmp/latest.<%= @app_name %>.dump.<%= @backup_ext %>"),
+#   :public => false
+# )
 
-file.save
-<%- else -%>
-directory = connection.directories.get("<%= @backup_bucket %>")
+# file.save
+# <%- else -%>
+# directory = connection.directories.get("<%= @backup_bucket %>")
 
-File.open("/mnt/tmp/latest.<%= @app_name %>.dump.<%= @backup_ext %>","wb") do |local_file|
-  directory.files.get("latest.<%= @app_name %>.dump.<%= @backup_ext %>") do |chunk|
-    local_file << chunk
-  end
-end
+# File.open("/mnt/tmp/latest.<%= @app_name %>.dump.<%= @backup_ext %>","wb") do |local_file|
+#   directory.files.get("latest.<%= @app_name %>.dump.<%= @backup_ext %>") do |chunk|
+#     local_file << chunk
+#   end
+# end
 
-<%- end -%>
+# <%- end -%>

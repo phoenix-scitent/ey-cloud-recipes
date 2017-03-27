@@ -1,13 +1,13 @@
-#!/bin/bash
+# #!/bin/bash
 
-DB_TYPE="<%= @db_type %>"
-APP_NAME="<%= @app_name %>"
-BACKUP_EXT="<%= @backup_ext %>"
-USER="<%= @user %>"
-ACTION=$1
+# DB_TYPE="<%= @db_type %>"
+# APP_NAME="<%= @app_name %>"
+# BACKUP_EXT="<%= @backup_ext %>"
+# USER="<%= @user %>"
+# ACTION=$1
 
-gem install fog -v 1.19.0
+# gem install fog -v 1.19.0
 
-sudo -i eybackup -c /root/aha_prod.backups.yml -e mysql --restore 9:aha
+# sudo -i eybackup -c /root/aha_prod.backups.yml -e mysql --restore 9:aha
 
-echo "Completed database restore at: $(date +%Y%m%d-%H%M%S)" >> ~./mnt/log/clone_refresh.log
+# echo "Completed database restore at: $(date +%Y%m%d-%H%M%S)" >> ~./mnt/log/clone_refresh.log
