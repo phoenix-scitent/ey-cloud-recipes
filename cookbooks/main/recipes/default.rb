@@ -81,7 +81,7 @@ include_recipe "emerge"
 
 include_recipe "nfs"
 
-include_recipe "clone_scripts"
+# include_recipe "clone_scripts"
 
 # include_recipe "nginx_common"
 
