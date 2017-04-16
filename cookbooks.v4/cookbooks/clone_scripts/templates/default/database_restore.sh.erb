@@ -1,0 +1,19 @@
+#!/bin/bash
+
+DB_TYPE="<%= @db_type %>"
+APP_NAME="<%= @app_name %>"
+BACKUP_EXT="<%= @backup_ext %>"
+USER="<%= @user %>"
+ACTION=$1
+
+gem install fog -v 1.19.0
+
+/home/$USER/s3_restore.rb
+
+if [[ "$DB_TYPE" == "mysql" ]]; then
+	zcat /mnt/tmp/latest.$APP_NAME.dump.$BACKUP_EXT | mysql $APP_NAME
+else
+	echo -ne '\n' | /engineyard/bin/load_foreign_postgres_db.sh /mnt/tmp/latest.$APP_NAME.dump $APP_NAME
+fi
+
+echo "Completed database restore at: $(date)" >> /home/#{node['owner_name']}/clone_database_restore.log
