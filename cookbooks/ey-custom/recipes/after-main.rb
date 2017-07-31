@@ -1,1 +1,3 @@
 include 'papertrail'
+
+include 'emerge'
