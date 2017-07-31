@@ -5,3 +5,5 @@ include 'emerge'
 include 'pdftk'
 
 include 'wkhtmltopdf'
+
+include 'nfs'

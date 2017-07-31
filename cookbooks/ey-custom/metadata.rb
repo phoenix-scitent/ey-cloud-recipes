@@ -7,3 +7,5 @@ depends 'emerge'
 depends 'pdftk'
 
 depends 'wkhtmltopdf'
+
+depends 'nfs'
