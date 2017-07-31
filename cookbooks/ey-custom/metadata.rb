@@ -5,3 +5,5 @@ depends 'papertrail'
 depends 'emerge'
 
 depends 'pdftk'
+
+depends 'wkhtmltopdf'
