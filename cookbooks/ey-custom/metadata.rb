@@ -9,3 +9,5 @@ depends 'pdftk'
 depends 'wkhtmltopdf'
 
 depends 'nfs'
+
+depends 'eybackup_slave'
