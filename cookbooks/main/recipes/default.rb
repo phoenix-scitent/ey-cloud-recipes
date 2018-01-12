@@ -20,7 +20,7 @@
 #include_recipe "authorized_keys"
 
 #uncomment to run the eybackup_slave recipe
-include_recipe "eybackup_slave"
+# include_recipe "eybackup_slave"
 
 #uncomment to run the ssmtp recipe
 #include_recipe "ssmtp"
@@ -79,7 +79,7 @@ include_recipe "wkhtmltopdf"
 
 include_recipe "emerge"
 
-include_recipe "nfs"
+# include_recipe "nfs"
 
 # include_recipe "clone_scripts"
 
@@ -104,7 +104,7 @@ include_recipe "nfs"
 # include_recipe "php"
 
 #uncomment to include the papertrail recipe
-include_recipe "papertrail"
+# include_recipe "papertrail"
 
 #enable Extension modules for a given Postgresql database
 # if ['solo','db_master', 'db_slave'].include?(node[:instance_role])
