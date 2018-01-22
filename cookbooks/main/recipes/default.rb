@@ -79,6 +79,8 @@ require_recipe "pdftk"
 
 require_recipe "wkhtmltopdf"
 
+require_recipe "elasticsearch"
+
 #uncomment to include the Elasticsearch recipe
 #require_recipe "elasticsearch"
 
