@@ -73,13 +73,13 @@
 # additional configuration of this recipe is required
 #require_recipe "mysql_administrative_tools"
 
-require_recipe "system_packages"
+#require_recipe "system_packages"
 
 require_recipe "pdftk"
 
 require_recipe "wkhtmltopdf"
 
-include_recipe "packages"
+#include_recipe "packages"
 
 #uncomment to include the Elasticsearch recipe
 #require_recipe "elasticsearch"
