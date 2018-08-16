@@ -52,7 +52,7 @@ if util?(node['nfs']['instance_name'])
        notifies :run, resources(:execute => "exportfs")
        variables({
          :exports => node["nfs"]["exports"],
-         :hostname => node['dna']
+         :hostname => node['dna']['name']
        })
     end
   end
