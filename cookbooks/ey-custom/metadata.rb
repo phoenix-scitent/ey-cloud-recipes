@@ -1,4 +1,4 @@
 name 'ey-custom'
 
+depends 'custom-packages'
 depends 'nfs'
-depends 'custom_packages'
