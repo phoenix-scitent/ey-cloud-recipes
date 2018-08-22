@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-if util?(node['nfs']['instance_name'])
+if util?(node['dna']['instance_name'])
 
   # slave recipe checks for file existance to ensure NFS is mounted properly
   execute "create-nfs.exists-file" do
