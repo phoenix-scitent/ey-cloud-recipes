@@ -18,7 +18,7 @@
 #
 
 #options = { 'nfs' => {'service' => {}, 'config' => {}, 'packages' => {} , 'port' => {} }}
-nfs(
+default['nfs'] = {
   'instance_name' => 'nfs_utility',
   'packages' => [ 'nfs-utils', 'rpcbind', 'File-NFSLock' ],
   'service' =>  {
@@ -41,7 +41,7 @@ nfs(
   # Application specific settings
   'links' => ["system"],
   'links' => ["non_public"]
-)
+}
 
 # UPDATE APPLICATION NAME HERE
 nfs_application("todo")
